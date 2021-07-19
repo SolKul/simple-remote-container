@@ -1,0 +1,8 @@
+{
+  "name": "ubuntu-devcontainer-project",
+  "dockerComposeFile": [
+      "./docker-compose.yml"
+  ],
+  "service": "ubuntu-test",
+  "workspaceFolder": "/work"
+} 
