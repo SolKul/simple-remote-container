@@ -1,9 +1,11 @@
 version: '3.3'
 
 services:
-  ubuntu-test: #サービス名はdevcontainer.jsonのサービス名と合わせる。
-    image: ubuntu
+  centos-test: #サービス名はdevcontainer.jsonのサービス名と合わせる。
+    image: centos:centos7
     tty: true # これをしないとコンテナが起動し続けないのでエラーになる。
     working_dir: /work # これをしないとworkフォルダがないのでエラーになる。
     volumes: 
       - ../work:/work # ファイル共有
+    privileged: true
+    command: /sbin/init

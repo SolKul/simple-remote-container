@@ -16,23 +16,25 @@
 version: '3.3'
 
 services:
-  ubuntu-test: #サービス名はdevcontainer.jsonのサービス名と合わせる。
-    image: ubuntu
+  centos-test: #サービス名はdevcontainer.jsonのサービス名と合わせる。
+    image: centos:centos7
     tty: true # これをしないとコンテナが起動し続けないのでエラーになる。
-    working_dir: /work # これをしないとworkフォルダができないのでエラーになる。
+    working_dir: /work # これをしないとworkフォルダがないのでエラーになる。
     volumes: 
-      - ../work:/work # ホストとのボリューム共有。../workは上のフォルダ構造で示した※1の一つ上の階層のworkフォルダを指し示す。
+      - ../work:/work  # ホストとのボリューム共有。../workは上のフォルダ構造で示した※1の一つ上の階層のworkフォルダを指し示す。
+    privileged: true
+    command: /sbin/init # privileged true，sbin/initをしないとsystemctlが権限の問題で動かない。
 ```
 
 `devcontainer.json`
 
 ```json
 {
-  "name": "ubuntu-devcontainer-project",
+  "name": "centos-devcontainer-project",
   "dockerComposeFile": [
       "./docker-compose.yml"
   ],
-  "service": "ubuntu-test",
+  "service": "centos-test",
   "workspaceFolder": "/work"
 } 
 ```

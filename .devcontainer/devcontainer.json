@@ -1,8 +1,8 @@
 {
-  "name": "ubuntu-devcontainer-project",
+  "name": "centos-devcontainer-project",
   "dockerComposeFile": [
       "./docker-compose.yml"
   ],
-  "service": "ubuntu-test",
+  "service": "centos-test",
   "workspaceFolder": "/work"
 } 
